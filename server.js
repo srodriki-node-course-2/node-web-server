@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const projects = require('./projects');
+
 const APP_PORT = process.env.PORT || 3000;
 var app = express();
 
@@ -58,6 +60,10 @@ app.get('/bad', (req, res) => {
         errorMessage: 'error handling request'
     })
 });
+
+// setup projects
+projects(app);
+
 app.listen(APP_PORT, () => {
     console.log('Server is up on port ' + APP_PORT);
 });
